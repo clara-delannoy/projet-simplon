@@ -1,10 +1,14 @@
 Livrable pour Simplon - Delannoy Clara
 
-Dans la BDD 'ventes' nous retrouvons la quantité de produits (A,B et C) vendus sur une période du 01-01-2022 au 20-01-2022 ainsi que la région dans laquelle ils ont été vendus. 
+Dans la BDD 'ventes' nous retrouvons la quantité de produits (A,B et C)
+vendus sur une période du 01-01-2022 au 20-01-2022 ainsi que la région 
+dans laquelle ils ont été vendus. 
 
 
 
-3.A. Calcul du chiffre d affaire (CA) total : par définition un CA est le total combiné en € de toutes les ventes soit le nombre de produit vendu multiplié par le prix de l article vendu : ici la base de donnée prix * qte 
+3.A. Calcul du chiffre d affaire (CA) total : par définition un CA est
+le total combiné en € de toutes les ventes soit le nombre de produits 
+vendus multiplié par le prix de l article vendu : la somme des prix * qte 
 
 --REQUETE SQL - Chiffre d affaire total : 
 SELECT SUM(qte*prix) 
@@ -17,7 +21,9 @@ Le chiffre d affaire total de l entreprise est de 46 625€ sur la période donn
 
 
 
-3.B. Calcul des ventes par produits : chaque produit A,B,C a rapporté un total d € qui lui est propre, on calcule donc le prix multiplié par la quantité en les regroupant par produit 
+3.B. Calcul des ventes par produits : chaque produit A,B,C a rapporté 
+un total d € qui lui est propre, on calcule donc le prix multiplié par 
+la quantité en les regroupant par produit 
 
 --REQUETE SQL - Ventes par produit :
 SELECT produit, SUM(qte), SUM(prix*qte) 
@@ -38,12 +44,19 @@ SUM(qte)=575
 SUM(prix*qte)=11500
 
 Analyse de données : 
-Les produits A et B rapportent d avantage (respectivement 17500€ et 17620€) à l entreprise que le produit C qui est le moins rentable (11500€). Le produit B est en revanche le plus rentable car il y a moins d exemplaires vendus que le produit A mais des bénéfices plus élevés.
+Les produits A et B rapportent d avantage (respectivement 17500€ et 17620€) 
+à l entreprise que le produit C qui est le moins rentable (11500€). Le produit
+B est en revanche le plus rentable car il y a moins d exemplaires vendus que 
+le produit A mais des bénéfices plus élevés.
 
 
 
 
-3.C. Calcul des ventes par région : chaque région a vendu un nombre de produit et rapporté un total d € qui lui sont propres, on calcule le total de produits vendus par région en additionnant toutes les qte et on calcule le total d € rapporté par région en additionnant le prix par la quantité le tout regroupé par région 
+3.C. Calcul des ventes par région : chaque région a vendu un nombre de produit 
+et rapporté un total d € qui lui sont propres, on calcule le total de produits 
+vendus par région en additionnant toutes les qte et on calcule le total d € 
+rapportés par région en additionnant le prix par la quantité le tout regroupé 
+par région.
 
 --REQUETE SQL - Ventes par région :
 SELECT region, SUM(qte), SUM(prix * qte)
@@ -60,7 +73,9 @@ SUM(qte)=1895
 SUM(prix * qte)=25900
 
 Analyse de données : 
-L entreprise vend plus de produits dans la région Sud avec 1865 produits vendus pour 25 900€ de bénéfices contre 1605 produits vendus dans la région Nord pour un bénéfice de 20 725€. 
+L entreprise vend plus de produits dans la région Sud avec 1865 produits vendus 
+pour 25 900€ de bénéfices contre 1605 produits vendus dans la région Nord pour 
+un bénéfice de 20 725€. 
 
 
 
